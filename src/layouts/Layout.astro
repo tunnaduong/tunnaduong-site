@@ -1,0 +1,283 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
+
+// Helper to check if current page matches
+const isActive = (href: string) => {
+  if (href === '/') {
+    return pathname === '/';
+  }
+  return pathname.startsWith(href) || pathname.startsWith(href + '/');
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — tunnaduong</title>
+    <meta name="description" content={description || 'tunnaduong'} />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <a class="logo" href="/">
+        <span class="logo__mark" aria-hidden="true">t</span>
+        <span class="logo__name">tunnaduong</span>
+      </a>
+
+      <nav class="nav">
+        <a href="/" aria-current={isActive('/') ? 'page' : undefined}>/home</a>
+        <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>/about</a>
+        <a href="/blog" aria-current={isActive('/blog') ? 'page' : undefined}>/blog</a>
+      </nav>
+
+      <slot />
+
+      <p class="contact">
+        inbox me at:
+        <a href="mailto:contact@tunnaduong.com">contact@tunnaduong.com</a>
+      </p>
+
+      <div class="social">
+        <a href="https://github.com/tunnaduong" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+        <a href="https://facebook.com/tunnaduong" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path
+              d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.929-1.956 1.887v2.236h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073"
+            />
+          </svg>
+        </a>
+        <a href="https://instagram.com/tunnaduong" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path
+              d="M17 1.5H7A5.5 5.5 0 0 0 1.5 7v10A5.5 5.5 0 0 0 7 22.5h10a5.5 5.5 0 0 0 5.5-5.5V7A5.5 5.5 0 0 0 17 1.5m0 2A3.5 3.5 0 0 1 20.5 7v10a3.5 3.5 0 0 1-3.5 3.5H7A3.5 3.5 0 0 1 3.5 17V7A3.5 3.5 0 0 1 7 3.5zM12 6.6a5.4 5.4 0 1 0 0 10.8 5.4 5.4 0 0 0 0-10.8m0 2a3.4 3.4 0 1 1 0 6.8 3.4 3.4 0 0 1 0-6.8m5.9-3.05a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"
+            />
+          </svg>
+        </a>
+        <a href="https://youtube.com/@tunnaduong" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"
+            />
+          </svg>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  /* tunnaduong.com — minimal personal site */
+
+  :root {
+    --ink: #000;
+    --muted: #333;
+    --bg: #fff;
+    --page-top: 72px;
+    --measure: 480px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #fff;
+      --muted: #ccc;
+      --bg: #0a0a0a;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: var(--page-top) 24px 96px;
+  }
+
+  /* ---------- logo ---------- */
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 26px;
+  }
+
+  .logo__mark {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    border: 3.5px solid var(--ink);
+    border-radius: 0px 0px 16px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 1;
+    padding-bottom: 5px;
+    padding-left: 4px;
+  }
+
+  .logo__name {
+    font-size: 34px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+
+  /* ---------- nav ---------- */
+
+  .nav {
+    margin-bottom: 26px;
+  }
+
+  .nav a {
+    color: var(--ink);
+    text-decoration: none;
+    margin-right: 4px;
+  }
+
+  .nav a:hover {
+    text-decoration: underline;
+  }
+
+  .nav a[aria-current="page"] {
+    font-weight: 700;
+  }
+
+  /* ---------- content ---------- */
+
+  p {
+    margin: 0 0 18px;
+  }
+
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  h2 + p {
+    margin-top: 0;
+  }
+
+  a {
+    color: var(--ink);
+  }
+
+  .links {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+    font-weight: 700;
+  }
+
+  .links a {
+    text-decoration: none;
+  }
+
+  .links a:hover {
+    text-decoration: underline;
+  }
+
+  .posts {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+  }
+
+  .posts li {
+    margin-bottom: 10px;
+  }
+
+  .posts a {
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .posts a:hover {
+    text-decoration: underline;
+  }
+
+  .posts time {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* ---------- footer ---------- */
+
+  .contact {
+    margin: 22px 0 14px;
+  }
+
+  .social {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+  }
+
+  .social a {
+    color: var(--ink);
+    line-height: 0;
+  }
+
+  .social a:hover {
+    opacity: 0.6;
+  }
+
+  .social svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    display: block;
+  }
+
+  @media (max-width: 520px) {
+    :root {
+      --page-top: 44px;
+    }
+
+    .logo__name {
+      font-size: 28px;
+    }
+
+    .logo__mark {
+      width: 40px;
+      height: 40px;
+      font-size: 26px;
+    }
+  }
+</style>

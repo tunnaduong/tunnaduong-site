@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tools = [
+  '/marzipano-importer',
+  '/diemthi',
+  '/vaolop',
+  '/reelos',
+  '/tramcam',
+  '/musiclib',
+  '/everyday',
+  '/cv',
+];
+
+const toolLinks = {
+  '/marzipano-importer': 'https://marzipano-importer.tunnaduong.com',
+  '/diemthi': 'https://diemthi.tunnaduong.com',
+  '/vaolop': 'https://vaolop.tunnaduong.com',
+  '/reelos': 'https://reelos.tunnaduong.com',
+  '/tramcam': 'https://tramcam.tunnaduong.com',
+  '/musiclib': 'https://musiclib.tunnaduong.com',
+  '/everyday': 'https://everyday.tunnaduong.com',
+  '/cv': 'https://cv.tunnaduong.com',
+};
+---
+
+<Layout title="home" description="tools i've made — tunnaduong">
+  <p>tools i've made:</p>
+
+  <ul class="links">
+    {tools.map((tool) => (
+      <li><a href={toolLinks[tool as keyof typeof toolLinks]}>{tool}</a></li>
+    ))}
+  </ul>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout title="blog" description="writing — tunnaduong">
+  <p>things i've written:</p>
+
+  <ul class="posts">
+    {posts.map((post) => (
+      <li>
+        <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+        <time datetime={post.data.date.toISOString().split('T')[0]}>
+          {post.data.date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
+        </time>
+      </li>
+    ))}
+  </ul>
+</Layout>
