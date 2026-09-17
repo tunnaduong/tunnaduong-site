@@ -1,6 +1,6 @@
 ---
 title: /notes-on-shooting-film-in-ha-nam
-date: 2026-07-04
+date: 2026-08-07
 description: learning film photography in my hometown
 ---
 

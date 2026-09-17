@@ -1,6 +1,6 @@
 ---
 title: /hello-world
-date: 2026-09-01
+date: 2026-05-09
 description: my first blog post
 ---
 

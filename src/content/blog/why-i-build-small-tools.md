@@ -1,6 +1,6 @@
 ---
 title: /why-i-build-small-tools
-date: 2026-08-12
+date: 2026-07-12
 description: thoughts on building focused, single-purpose tools
 ---
 
