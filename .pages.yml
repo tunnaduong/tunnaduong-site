@@ -17,7 +17,6 @@ content:
         label: Published Datetime
         type: date
         options: 
-          time: true
           format: "yyyy-MM-dd"
 
       - name: body
