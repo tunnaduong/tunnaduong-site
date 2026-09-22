@@ -1,28 +1,30 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const tools = [
-  '/readtime',
-  '/marzipano-importer',
-  '/diemthi',
-  '/vaolop',
-  '/reelos',
-  '/tramcam',
-  '/musiclib',
-  '/everyday',
-  '/cv',
+  "/hanamworks",
+  "/readtime",
+  "/marzipano-importer",
+  "/diemthi",
+  "/vaolop",
+  "/reelos",
+  "/tramcam",
+  "/musiclib",
+  "/everyday",
+  "/cv",
 ];
 
 const toolLinks = {
-  '/readtime': 'https://readtime.tunnaduong.com',
-  '/marzipano-importer': 'https://marzipano-importer.tunnaduong.com',
-  '/diemthi': 'https://diemthi.tunnaduong.com',
-  '/vaolop': 'https://vaolop.tunnaduong.com',
-  '/reelos': 'https://reelos.tunnaduong.com',
-  '/tramcam': 'https://tramcam.tunnaduong.com',
-  '/musiclib': 'https://musiclib.tunnaduong.com',
-  '/everyday': 'https://everyday.tunnaduong.com',
-  '/cv': 'https://cv.tunnaduong.com',
+  "/hanamworks": "https://hanamworks.tunnaduong.com",
+  "/readtime": "https://readtime.tunnaduong.com",
+  "/marzipano-importer": "https://marzipano-importer.tunnaduong.com",
+  "/diemthi": "https://diemthi.tunnaduong.com",
+  "/vaolop": "https://vaolop.tunnaduong.com",
+  "/reelos": "https://reelos.tunnaduong.com",
+  "/tramcam": "https://tramcam.tunnaduong.com",
+  "/musiclib": "https://musiclib.tunnaduong.com",
+  "/everyday": "https://everyday.tunnaduong.com",
+  "/cv": "https://cv.tunnaduong.com",
 };
 ---
 
@@ -30,8 +32,12 @@ const toolLinks = {
   <p>tools i've made:</p>
 
   <ul class="links">
-    {tools.map((tool) => (
-      <li><a href={toolLinks[tool as keyof typeof toolLinks]}>{tool}</a></li>
-    ))}
+    {
+      tools.map((tool) => (
+        <li>
+          <a href={toolLinks[tool as keyof typeof toolLinks]}>{tool}</a>
+        </li>
+      ))
+    }
   </ul>
 </Layout>
